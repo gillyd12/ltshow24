@@ -11,34 +11,15 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 
 // add specific icons to use
 import {
-  faLayerGroup,
-  faChevronDown,
-  faSpinner,
-  faChevronUp,
-  faCaretDown,
-  faCaretUp,
-  faCaretRight,
-  faCaretLeft,
-  faMap,
-  faSquare,
-  faCheck
+  faFire, faCircleExclamation
 } from '@fortawesome/free-solid-svg-icons'
 import { faCircleXmark, faCopy } from '@fortawesome/free-regular-svg-icons'
 
 library.add(
-  faLayerGroup,
-  faChevronDown,
-  faChevronUp,
-  faSpinner,
   faCircleXmark,
   faCopy,
-  faCaretDown,
-  faCaretUp,
-  faCaretRight,
-  faCaretLeft,
-  faMap,
-  faSquare,
-  faCheck
+  faFire,
+  faCircleExclamation
 )
 
 const app = createApp(App)
