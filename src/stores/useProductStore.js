@@ -20,9 +20,7 @@ export const useProductStore = defineStore('product', {
       if (search !== null) {
         query = 'q=' + search
       }
-      const res = await getProducts(query)
-      // this.products = (await getProducts(query)).data.products;
-      return res.data.products;
+      this.products = (await getProducts(query)).data.products;
     },
     async getProduct(id) {
       return await getProduct(id)

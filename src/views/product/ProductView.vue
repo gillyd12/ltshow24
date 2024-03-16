@@ -1,9 +1,8 @@
 <template>
-  <Product :products="products"></Product>
+  <Product :products="productStore.products"></Product>
 </template>
 
 <script>
-import { ref } from 'vue'
 import { useProductStore } from '@/stores/useProductStore'
 import Product from '@/components/product/Product.vue'
 
@@ -15,13 +14,9 @@ export default {
   setup() {
     const productStore = useProductStore()
 
-    const products = ref([])
+    productStore.getProducts(null);
 
-    productStore.getProducts(null).then((response) => {
-      products.value = response
-    })
-
-    return { products, Product }
+    return { Product, productStore }
   }
 }
 </script>
