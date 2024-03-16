@@ -1,0 +1,15 @@
+@import "../../assets/variables.scss";
+
+.header {
+  background-color: $brand-blue;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: $bright-grey;
+
+  .brand {
+    height: inherit;
+    .logo {
+      height: 128px;
+    }
+  }
+}
