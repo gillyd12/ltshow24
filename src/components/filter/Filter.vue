@@ -1,8 +1,8 @@
 <template>
-  <div class="filter d-flex flex-column">
-    <div class='border rounded ps-3 pt-2 pb-2' v-if="productStore.filters && productStore.filters.length > 0">
+  <div class="filter">
+    <div class='border rounded ps-3 pt-1 pb-1' v-if="productStore.filters && productStore.filters.length > 0">
       <p class="fw-bold text-dark mb-0">Filter by Product Category</p>
-      <div class="d-flex flex-row">
+      <div class="">
         <div class="options" v-for="(value, index) in productStore.filters" :key="index">
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="checkbox" :id="index" :value="value" @click="productStore.toggleSelectedFilters(value)"/>

@@ -5,12 +5,9 @@ const { getProducts, getProduct } = product()
 
 export const useProductStore = defineStore('product', {
   state: () => ({
-    types: [],
     products: [],
     filters: [],
-    selectedFilters: [],
-    sort_order: '',
-    search: ''
+    selectedFilters: []
   }),
 
   getters: {},
@@ -18,8 +15,8 @@ export const useProductStore = defineStore('product', {
   actions: {
     async getProducts(search) {
       let query = ''
-      if (search !== null) {
-        query = 'q=' + search
+      if (search !== null && search !== '') {
+        query = 'search?q=' + search
       }
       this.products = (await getProducts(query)).data.products
       this.filters = [...new Set(this.products.map((product) => product.category))]
@@ -36,6 +33,16 @@ export const useProductStore = defineStore('product', {
       } else {
         this.selectedFilters.push(item)
       }
+    },
+
+    sort(property = '', order = 'asc') {
+      this.products = this.products.sort((a, b) => {
+        if (order === 'asc') {
+          return a[property] > b[property] ? 1 : a[property] < b[property] ? -1 : 0
+        } else {
+          return b[property] > a[property] ? 1 : b[property] < a[property] ? -1 : 0
+        }
+      })
     }
   }
 })

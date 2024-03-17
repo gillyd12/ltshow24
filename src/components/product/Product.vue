@@ -1,7 +1,11 @@
 <template>
   <div class="product">
     <div v-if="filteredProducts">
-      <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="row row-cols-1 g-4" :class="{
+          'row-cols-md-3': filteredProducts.length >= 3,
+          'row-cols-md-2': filteredProducts.length === 2,
+          'row-cols-md-1': filteredProducts.length === 1,
+        }">
         <div v-for="product in filteredProducts" :key="product.id">
           <div class="card shadow">
             <img

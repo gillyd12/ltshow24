@@ -14,7 +14,7 @@ export default {
   setup() {
     const productStore = useProductStore()
 
-    productStore.getProducts(null);
+    productStore.getProducts(null)
 
     return { Product, productStore }
   }

@@ -13,11 +13,9 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import {
   faFire, faCircleExclamation, faThumbsUp
 } from '@fortawesome/free-solid-svg-icons'
-import { faCircleXmark, faCopy } from '@fortawesome/free-regular-svg-icons'
+// import { faCircleXmark, faCopy } from '@fortawesome/free-regular-svg-icons'
 
 library.add(
-  faCircleXmark,
-  faCopy,
   faFire,
   faCircleExclamation,
   faThumbsUp
