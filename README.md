@@ -1,26 +1,20 @@
-# ltshow24
+# Required Steps (to run locally)
 
-This template should help get you started developing with Vue 3 in Vite.
+### Assumes you have node and npm installed!
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+## Project Setup (Step 1)
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Compile and Hot-Reload for Development (Step 2)
 
 ```sh
 npm run dev
 ```
+
+# Optional Steps (if you want to check out test cases, or build for deployment...)
 
 ### Compile and Minify for Production
 

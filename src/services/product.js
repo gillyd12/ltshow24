@@ -5,7 +5,7 @@ export default function parcel() {
   const { DataException } = exception()
   const { nonAuthClient } = sendRequest()
 
-  const baseEndPoint = '/products/'
+  const baseEndPoint = '/products'
 
   async function getProducts(query) {
     try {
@@ -17,7 +17,7 @@ export default function parcel() {
 
   async function getProduct(id) {
     try {
-      return await nonAuthClient.get(`${baseEndPoint}${id}`)
+      return await nonAuthClient.get(`${baseEndPoint}/${id}`)
     } catch (error) {
       throw new DataException(error)
     }

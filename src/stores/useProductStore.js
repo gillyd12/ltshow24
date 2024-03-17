@@ -16,7 +16,9 @@ export const useProductStore = defineStore('product', {
     async getProducts(search) {
       let query = ''
       if (search !== null && search !== '') {
-        query = 'search?q=' + search
+        query = '/search?q=' + search
+      } else {
+        query = '?limit=100'
       }
       this.products = (await getProducts(query)).data.products
       this.filters = [...new Set(this.products.map((product) => product.category))]
