@@ -1,5 +1,5 @@
 <template>
-  <Product :products="products" :filters="[]" :individual="true"></Product>
+  <Product :products="products" :filters="[]" :individual="true" class="adjust-individual-width"></Product>
 </template>
 
 <script>

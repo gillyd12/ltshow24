@@ -3,11 +3,11 @@
 @import 'node_modules/bootstrap/scss/mixins';
 
 .filter {
-    min-width: 260px;
+  min-width: 260px;
 }
 
 @include media-breakpoint-down(lg) {
-    .filter {
-        display: none;
-    }
+  .filter {
+    display: none;
+  }
 }

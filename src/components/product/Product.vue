@@ -2,19 +2,24 @@
   <div class="product">
     <div v-if="filteredProducts">
       <div
-        class="row row-cols-1 g-4"
+        class="row g-4"
         :class="{
-          'row-cols-md-3': filteredProducts.length >= 3,
+          'row-cols-1': filteredProducts.length === 1,
           'row-cols-md-2': filteredProducts.length === 2,
-          'row-cols-md-1': filteredProducts.length === 1
+          'row-cols-lg-3': filteredProducts.length >= 3
         }"
       >
         <div v-for="product in filteredProducts" :key="product.id">
-          <div class="card shadow" :class="{ pointer: !individual }" @click="goToProduct(product.id)">
+          <div
+            class="card shadow"
+            :class="{ pointer: !individual }"
+            @click="goToProduct(product.id)"
+          >
             <img
               :src="product.thumbnail"
               class="card-img-top thumbnail"
               :alt="product.description"
+              v-if="!individual"
             />
             <div class="card-body">
               <div class="rating-container pb-2">
@@ -53,6 +58,17 @@
                   <h4 class="card-text fw-bold ps-2">{{ formatCurrency(product.price) }}</h4>
                 </div>
               </div>
+              <div class="individual-detail d-flex flex-column pt-5" v-if="individual">
+                <div class="d-flex">
+                  <p class="fw-bold text-dark pe-2">Brand:</p>
+                  <p class="text-dark">{{ product.brand }}</p>
+                </div>
+                <div class="row g-4 row-cols-lg-3">
+                  <div v-for="(value, index) in product.images" :key="index">
+                    <img :src="value" class="card-img-top thumbnail"/>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="card-footer">
               <div v-if="product.stock < 50" class="text-danger">
@@ -77,7 +93,7 @@
 
 <script>
 import { computed } from 'vue'
-import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router'
 export default {
   // eslint-disable-next-line vue/multi-word-component-names, vue/no-reserved-component-names
   name: 'Product',
@@ -96,8 +112,7 @@ export default {
   components: {},
   methods: {},
   setup(prop) {
-
-    const router = useRouter();
+    const router = useRouter()
 
     function formatCurrency(number) {
       return new Intl.NumberFormat('en-US', {
