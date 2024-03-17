@@ -1,8 +1,8 @@
 <template>
   <div class="product">
-    <div v-if="products">
+    <div v-if="filteredProducts">
       <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div v-for="product in products" :key="product.id">
+        <div v-for="product in filteredProducts" :key="product.id">
           <div class="card shadow">
             <img
               :src="product.thumbnail"
@@ -49,24 +49,15 @@
             </div>
             <div class="card-footer">
               <div v-if="product.stock < 50" class="text-danger">
-                <font-awesome-icon
-                  class=""
-                  icon="fire"
-                />
+                <font-awesome-icon class="" icon="fire" />
                 <span class="ps-2">Hurry, only {{ product.stock }} left!</span>
               </div>
               <div v-if="product.stock >= 50 && product.stock < 100" class="text-warning">
-                <font-awesome-icon
-                  class=""
-                  icon="circle-exclamation"
-                />
+                <font-awesome-icon class="" icon="circle-exclamation" />
                 <span class="ps-2">Time to buy! {{ product.stock }} left in stock.</span>
               </div>
               <div v-if="product.stock >= 100" class="text-body">
-                <font-awesome-icon
-                  class=""
-                  icon="thumbs-up"
-                />
+                <font-awesome-icon class="" icon="thumbs-up" />
                 <span class="ps-2">{{ product.stock }} in stock, buy today!</span>
               </div>
             </div>
@@ -78,17 +69,21 @@
 </template>
 
 <script>
+import { computed } from 'vue'
 export default {
   // eslint-disable-next-line vue/multi-word-component-names, vue/no-reserved-component-names
   name: 'Product',
   props: {
     products: {
       type: Object
+    },
+    filters: {
+      type: Object
     }
   },
   components: {},
   methods: {},
-  setup() {
+  setup(prop) {
     function formatCurrency(number) {
       return new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -100,7 +95,15 @@ export default {
       return `M11 1 A10 10 0 ${fraction > 0.5 ? 1 : 0} 1 ${11 + 10 * Math.sin(2 * Math.PI * fraction)} ${11 - 10 * Math.cos(2 * Math.PI * fraction)} L11 11 Z`
     }
 
-    return { formatCurrency, partialCircle }
+    const filteredProducts = computed(() => {
+      if (prop.filters.length === 0) {
+        return prop.products
+      } else {
+        return prop.products.filter((product) => prop.filters.includes(product.category))
+      }
+    })
+
+    return { formatCurrency, partialCircle, filteredProducts }
   }
 }
 </script>

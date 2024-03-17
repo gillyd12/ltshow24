@@ -1,5 +1,5 @@
 <template>
-  <Product :products="productStore.products"></Product>
+  <Product :products="productStore.products" :filters="productStore.selectedFilters"></Product>
 </template>
 
 <script>
