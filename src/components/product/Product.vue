@@ -1,13 +1,16 @@
 <template>
   <div class="product">
     <div v-if="filteredProducts">
-      <div class="row row-cols-1 g-4" :class="{
+      <div
+        class="row row-cols-1 g-4"
+        :class="{
           'row-cols-md-3': filteredProducts.length >= 3,
           'row-cols-md-2': filteredProducts.length === 2,
-          'row-cols-md-1': filteredProducts.length === 1,
-        }">
+          'row-cols-md-1': filteredProducts.length === 1
+        }"
+      >
         <div v-for="product in filteredProducts" :key="product.id">
-          <div class="card shadow">
+          <div class="card shadow" :class="{ pointer: !individual }" @click="goToProduct(product.id)">
             <img
               :src="product.thumbnail"
               class="card-img-top thumbnail"
@@ -74,6 +77,7 @@
 
 <script>
 import { computed } from 'vue'
+import { useRouter } from 'vue-router';
 export default {
   // eslint-disable-next-line vue/multi-word-component-names, vue/no-reserved-component-names
   name: 'Product',
@@ -83,11 +87,18 @@ export default {
     },
     filters: {
       type: Object
+    },
+    individual: {
+      type: Boolean,
+      default: false
     }
   },
   components: {},
   methods: {},
   setup(prop) {
+
+    const router = useRouter();
+
     function formatCurrency(number) {
       return new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -107,7 +118,11 @@ export default {
       }
     })
 
-    return { formatCurrency, partialCircle, filteredProducts }
+    function goToProduct(id) {
+      router.push({ name: 'product', params: { id } })
+    }
+
+    return { formatCurrency, partialCircle, filteredProducts, goToProduct }
   }
 }
 </script>

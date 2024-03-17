@@ -3,6 +3,7 @@ const titleAppendText = ' - Welcome';
 const routes = [
   {
     path: '/',
+    redirect: '/products',
     name: 'home',
     component: () => import('../views/home/HomeView.vue'),
     meta: {

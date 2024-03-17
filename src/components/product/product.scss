@@ -3,7 +3,6 @@
 .card {
   min-height: 500px;
   width: 100%;
-  cursor: pointer;
   transition: background-color 0.5s ease;
 
   .card-body {
@@ -15,6 +14,11 @@
     object-fit: cover;
     padding: 10px;
   }
+
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 .card:hover {
