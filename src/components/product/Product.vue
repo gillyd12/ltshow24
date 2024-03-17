@@ -63,7 +63,11 @@
                 <span class="ps-2">Time to buy! {{ product.stock }} left in stock.</span>
               </div>
               <div v-if="product.stock >= 100" class="text-body">
-                <span class="ps-2">{{ product.stock }} in stock.</span>
+                <font-awesome-icon
+                  class=""
+                  icon="thumbs-up"
+                />
+                <span class="ps-2">{{ product.stock }} in stock, buy today!</span>
               </div>
             </div>
           </div>

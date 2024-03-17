@@ -11,7 +11,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 
 // add specific icons to use
 import {
-  faFire, faCircleExclamation
+  faFire, faCircleExclamation, faThumbsUp
 } from '@fortawesome/free-solid-svg-icons'
 import { faCircleXmark, faCopy } from '@fortawesome/free-regular-svg-icons'
 
@@ -19,7 +19,8 @@ library.add(
   faCircleXmark,
   faCopy,
   faFire,
-  faCircleExclamation
+  faCircleExclamation,
+  faThumbsUp
 )
 
 const app = createApp(App)
