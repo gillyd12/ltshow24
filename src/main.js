@@ -9,17 +9,9 @@ import router from './router'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 
-// add specific icons to use
-import {
-  faFire, faCircleExclamation, faThumbsUp
-} from '@fortawesome/free-solid-svg-icons'
-// import { faCircleXmark, faCopy } from '@fortawesome/free-regular-svg-icons'
+import { faFire, faCircleExclamation, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 
-library.add(
-  faFire,
-  faCircleExclamation,
-  faThumbsUp
-)
+library.add(faFire, faCircleExclamation, faThumbsUp)
 
 const app = createApp(App)
 

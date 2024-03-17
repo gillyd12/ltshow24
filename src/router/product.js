@@ -2,8 +2,8 @@ const titleAppendText = ' - Product';
 
 const routes = [
   {
-    path: '/product',
-    name: 'product',
+    path: '/products',
+    name: 'products',
     component: () => import('../views/product/ProductView.vue'),
     meta: {
       title: 'LTShow24'.concat(titleAppendText),

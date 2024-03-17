@@ -47,7 +47,7 @@
                       )
                     }}
                   </p>
-                  <h3 class="card-text fw-bold ps-2">{{ formatCurrency(product.price) }}</h3>
+                  <h4 class="card-text fw-bold ps-2">{{ formatCurrency(product.price) }}</h4>
                 </div>
               </div>
             </div>
